@@ -2,6 +2,22 @@
 
 Personal portfolio for Joseph Searle — AI engineer based in London. Built as a fully-typed React SPA with a headless CMS, server-side contact form, and a TDD test suite.
 
+## Table of Contents
+
+- [Stack](#stack)
+- [Prerequisites](#prerequisites)
+- [Quick start](#quick-start)
+- [Usage](#usage)
+- [Environment variables](#environment-variables)
+- [Scripts](#scripts)
+- [Project structure](#project-structure)
+- [Connecting Sanity CMS](#connecting-sanity-cms)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [Further reading](#further-reading)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Stack
 
 | Concern    | Choice                                      |
@@ -36,6 +52,18 @@ The dev server starts at `http://localhost:5173`.
 
 The contact form and Sanity fetches degrade gracefully when their respective env vars are absent, so the app runs locally with static data and no API keys.
 
+## Usage
+
+<!-- TODO: Add a screenshot or GIF of the live site here, e.g.:
+![Portfolio screenshot](docs/images/screenshot.png)
+-->
+
+The portfolio is deployed at **[josephsearle.dev](https://josephsearle.dev)** <!-- TODO: confirm live URL -->.
+
+It is a single-page application with six sections navigable from the top nav: Hero, Skills, Timeline, Projects, Writing, and Contact. The `/blog/:slug` route renders individual posts fetched from Sanity CMS. The contact form at the bottom of the page sends messages via the `/api/contact` serverless function.
+
+For local development, follow the [Quick start](#quick-start) steps above.
+
 ## Environment variables
 
 | Variable                  | Required         | Description                                            |
@@ -61,7 +89,7 @@ npm run format        # Prettier
 
 ## Project structure
 
-```
+```text
 website/
 ├── api/
 │   └── contact.ts              # Vercel serverless — validates with Zod, sends via Resend
@@ -172,3 +200,23 @@ MSW intercepts `/api/contact` in tests — no real HTTP requests or email sends 
 
 - [Architecture overview](docs/architecture.md)
 - [Architecture Decision Records](docs/decisions/)
+
+## Contributing
+
+Contributions are welcome. To get started:
+
+1. Fork the repository and create a branch from `main`
+2. Install dependencies: `npm install`
+3. Copy the environment file and fill in values: `cp .env.example .env.local`
+4. Run the test suite to confirm everything passes: `npm run test:run`
+5. Make your changes, keeping tests green: `npm run test:run && npm run lint`
+6. Open a pull request with a clear description of the change
+
+Please open an issue before starting work on a significant change so we can discuss the approach first.
+
+## License
+
+<!-- TODO: Add a LICENSE file to the repository root and update this section.
+     Example for MIT: [MIT](LICENSE) © 2025 Joseph Searle -->
+
+© 2025 Joseph Searle. All rights reserved.
