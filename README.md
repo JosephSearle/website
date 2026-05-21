@@ -2,6 +2,12 @@
 
 Personal portfolio for Joseph Searle — AI engineer based in London. Built as a fully-typed React SPA with a headless CMS, server-side contact form, and a TDD test suite.
 
+<div align="center">
+
+![Portfolio demo](docs/images/demo.gif)
+
+</div>
+
 ## Table of Contents
 
 - [Stack](#stack)
@@ -53,10 +59,6 @@ The dev server starts at `http://localhost:5173`.
 The contact form and Sanity fetches degrade gracefully when their respective env vars are absent, so the app runs locally with static data and no API keys.
 
 ## Usage
-
-<!-- TODO: Add a screenshot or GIF of the live site here, e.g.:
-![Portfolio screenshot](docs/images/screenshot.png)
--->
 
 The portfolio is deployed at **[josephsearle.dev](https://josephsearle.dev)** <!-- TODO: confirm live URL -->.
 
@@ -198,8 +200,9 @@ MSW intercepts `/api/contact` in tests — no real HTTP requests or email sends 
 
 ## Further reading
 
-- [Architecture overview](docs/architecture.md)
-- [Architecture Decision Records](docs/decisions/)
+- [Architecture documentation](docs/architecture/README.md)
+- [Architecture Decision Records](docs/architecture/adr/)
+- [Architecture overview (narrative)](docs/architecture.md)
 
 ## Contributing
 

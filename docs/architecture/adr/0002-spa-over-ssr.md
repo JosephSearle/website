@@ -1,6 +1,8 @@
-# ADR 001 — Vite SPA over Next.js / SSR
+# ADR 0002: Use Vite SPA over Next.js / SSR
 
-**Status:** Accepted
+**Date:** 2026-05-20
+**Status:** Accepted  
+**Deciders:** Joseph Searle
 
 ## Context
 
@@ -25,6 +27,24 @@ For a portfolio with five sections and a blog, the complexity of SSR brings no m
 
 ## Consequences
 
+### Positive
+
+- Zero build-framework lock-in — the app is plain React; switching bundlers is a config change
+- Local development is standard Vite; no Next.js-specific patterns to learn
+- Static hosting on any CDN is possible; Vercel is not required
+
+### Negative
+
 - The bundle is ~630 KB gzipped (~198 KB) — acceptable for a portfolio but would need code-splitting if the project scaled significantly
 - Blog post content is fetched client-side on navigation (no ISR/SSR pre-rendering per post)
+- Per-post OpenGraph metadata is not server-rendered; posts share the site's generic OG image
 - `vercel.json` requires a rewrite rule to handle client-side routing: `/((?!api/).*) → /index.html`
+
+### Neutral / Risks
+
+- If SEO requirements change (e.g. per-post OG images matter for blog discoverability), migration to Next.js or adding a static generation step would be required
+
+## Related Decisions
+
+- Supersedes: (none) — original decision documented in `docs/decisions/001-spa-over-ssr.md`
+- Related: [ADR-0006](0006-vercel-for-deployment.md) (deployment target choice was influenced by this SPA decision)
